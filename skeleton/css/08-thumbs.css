@@ -1,2 +1,20 @@
 /* PHASE 2: Thumbs */
 
+.profile-friends {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.thumb {
+  display: block;
+  position: relative;
+  width: 58px;
+  height: 43px;
+  border: 1px solid black;
+  border-radius: 7px;
+}
+
+.thumb > img {
+  border-radius: 7px;
+}
