@@ -76,7 +76,13 @@ Board.prototype.getPiece = function (pos) {
 Board.prototype.isMine = function (pos, color) {
 
   let piece = this.getPiece(pos);
-  return piece.color === color ? true : false;
+  if (piece == null) return null;
+  // return piece.color === color ? true : false;
+  if (piece.color === color) {
+    return true;
+  } else if (piece.oppColor() === color) {
+    return false;
+  }
 
 };
 
@@ -84,6 +90,8 @@ Board.prototype.isMine = function (pos, color) {
  * Checks if a given position has a piece on it.
  */
 Board.prototype.isOccupied = function (pos) {
+  if (this.getPiece(pos) === undefined) return false;
+  return true;
 };
 
 /**
