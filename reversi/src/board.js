@@ -9,7 +9,8 @@ if (typeof window === 'undefined'){
  * and two white pieces at [3, 3] and [4, 4]
  */
 function _makeGrid () {
-  let board = Array(8).fill(Array(8));
+
+  const board = Array(8).fill().map(() => (Array(8)));
 
   board[3][4] = new Piece('black');
   board[4][3] = new Piece('black');
@@ -36,6 +37,15 @@ Board.DIRS = [
  * Checks if a given position is on the Board.
  */
 Board.prototype.isValidPos = function (pos) {
+  let [row, col] = pos
+
+  if (row < 0 || row > 7) return false;
+  if (col < 0 || col > 7) return false;
+
+  // return pos.some((ele) => ele > 7 || ele < 0);
+  
+  return true;
+
 };
 
 /**
@@ -43,13 +53,31 @@ Board.prototype.isValidPos = function (pos) {
  * throwing an Error if the position is invalid.
  */
 Board.prototype.getPiece = function (pos) {
+
+  if (!this.isValidPos(pos)) {
+    throw new Error ('Not valid pos!');
+  };
+  
+  let [row,col] = pos;
+
+  return this.grid[row][col];
+
 };
+
+// should return a piece for an occupied position
+// should return undefined for an empty position
+// should throw an error for an invalid position
+
 
 /**
  * Checks if the piece at a given position
  * matches a given color.
  */
 Board.prototype.isMine = function (pos, color) {
+
+  let piece = this.getPiece(pos);
+  return piece.color === color ? true : false;
+
 };
 
 /**
