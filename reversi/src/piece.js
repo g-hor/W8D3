@@ -23,18 +23,20 @@ Piece.prototype.oppColor = function () {
  * Changes the piece's color to the opposite color.
  */
 Piece.prototype.flip = function () {
-    
+    // this.color === 'black' ? this.color = 'white' : this.color = 'black';
+    this.color = this.oppColor();
 };
 
 /**
  * Returns a string representation of the piece
  * based on its color.
  */
-// Piece.prototype.toString = function () {
-// };
+Piece.prototype.toString = function () {
+    return this.color[0].toUpperCase();
+};
 
-// // DON'T TOUCH THIS CODE
-// if (typeof window === 'undefined'){
-//     module.exports = Piece;
-// }
-// // DON'T TOUCH THIS CODE
+// DON'T TOUCH THIS CODE
+if (typeof window === 'undefined'){
+    module.exports = Piece;
+}
+// DON'T TOUCH THIS CODE
